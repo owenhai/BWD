@@ -1,0 +1,138 @@
+<header class="header" role="banner">
+  <div class="header-top">
+    <div class="logo" aria-label="Truyen Hay Logo" role="img">
+      <span class="red">Truyen</span><span class="yellow">Hay</span>
+    </div>
+
+    <div class="search-container">
+      <input
+        type="search"
+        aria-label="Tìm truyện"
+        placeholder="Tìm truyện..."
+        class="search-input"
+        autocomplete="off"
+      />
+      <span class="material-icons md-18 search-icon" aria-hidden="true"
+        ></span
+      >
+    </div>
+
+    <button
+      aria-label="Mở menu"
+      class="mobile-menu-button"
+      id="mobileMenuButton"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <span class="material-icons md-36">menu</span>
+    </button>
+  </div>
+
+  <nav class="navbar" role="navigation" aria-label="TruyenHay site navigation">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="../HOME/home.html" class="nav-link">Trang chủ</a>
+      </li>
+      <li class="nav-item">
+        <div class="genre-dropdown">
+          <button class="dropdown-btn">
+            Thể Loại ▼
+            <span class="material-icons"></span>
+          </button>
+          <div class="dropdown-content">
+            <div class="genre-column">
+              <a href="../PAGE/hot.html?genre=Action">Action</a>
+              <a href="../PAGE/hot.html?genre=Adventure">Adventure</a>
+              <a href="../PAGE/hot.html?genre=Anime">Anime</a>
+              <a href="../PAGE/hot.html?genre=Chuyển Sinh">Chuyển Sinh</a>
+              <a href="../PAGE/hot.html?genre=Cổ Đại">Cổ Đại</a>
+              <a href="../PAGE/hot.html?genre=Comedy">Comedy</a>
+              <a href="../PAGE/hot.html?genre=Comic">Comic</a>
+              <a href="../PAGE/hot.html?genre=Demons">Demons</a>
+              <a href="../PAGE/hot.html?genre=Supernatural">Supernatural</a>
+              <a href="../PAGE/hot.html?genre=Xuyên Không">Xuyên Không</a>
+            </div>
+            <div class="genre-column">
+              <a href="../PAGE/hot.html?genre=Detective">Detective</a>
+              <a href="../PAGE/hot.html?genre=Doujinshi">Doujinshi</a>
+              <a href="../PAGE/hot.html?genre=Drama">Drama</a>
+              <a href="../PAGE/hot.html?genre=Fantasy">Fantasy</a>
+              <a href="../PAGE/hot.html?genre=Gender Bender">Gender Bender</a>
+              <a href="../PAGE/hot.html?genre=Harem">Harem</a>
+              <a href="../PAGE/hot.html?genre=Historical">Historical</a>
+              <a href="../PAGE/hot.html?genre=Horror">Horror</a>
+              <a href="../PAGE/hot.html?genre=Tragedy">Tragedy</a>
+            </div>
+            <div class="genre-column">
+              <a href="../PAGE/hot.html?genre=Huyền Huyễn">Huyền Huyễn</a>
+              <a href="../PAGE/hot.html?genre=Isekai">Isekai</a>
+              <a href="../PAGE/hot.html?genre=Josei">Josei</a>
+              <a href="../PAGE/hot.html?genre=Mafia">Mafia</a>
+              <a href="../PAGE/hot.html?genre=Magic">Magic</a>
+              <a href="../PAGE/hot.html?genre=Manga">Manga</a>
+              <a href="../PAGE/hot.html?genre=Manhua">Manhua</a>
+              <a href="../PAGE/hot.html?genre=Manhwa">Manhwa</a>
+              <a href="../PAGE/hot.html?genre=Trọng Sinh">Trọng Sinh</a>
+              <a href="../PAGE/hot.html?genre=Tiên Hiệp">Tiên Hiệp</a>
+            </div>
+            <div class="genre-column">
+              <a href="../PAGE/hot.html?genre=Martial Arts">Martial Arts</a>
+              <a href="../PAGE/hot.html?genre=Military">Military</a>
+              <a href="../PAGE/hot.html?genre=Mystery">Mystery</a>
+              <a href="../PAGE/hot.html?genre=Ngôn Tình">Ngôn Tình</a>
+              <a href="../PAGE/hot.html?genre=One Shot">One shot</a>
+              <a href="../PAGE/hot.html?genre=Psychological">Psychological</a>
+              <a href="../PAGE/hot.html?genre=Romance">Romance</a>
+              <a href="../PAGE/hot.html?genre=School Life">School Life</a>
+              <a href="../PAGE/hot.html?genre=Truyện Màu">Truyện Màu</a>
+            </div>
+            <div class="genre-column">
+              <a href="../PAGE/hot.html?genre=Sci-fi">Sci-fi</a>
+              <a href="../PAGE/hot.html?genre=Seinen">Seinen</a>
+              <a href="../PAGE/hot.html?genre=Shoujo">Shoujo</a>
+              <a href="../PAGE/hot.html?genre=Shoujo Ai">Shoujo Ai</a>
+              <a href="../PAGE/hot.html?genre=Shounen">Shounen</a>
+              <a href="../PAGE/hot.html?genre=Shounen Ai">Shounen Ai</a>
+              <a href="../PAGE/hot.html?genre=Slice of life">Slice of life</a>
+              <a href="../PAGE/hot.html?genre=Sports">Sports</a>
+              <a href="../PAGE/hot.html?genre=Webtoon">Webtoon</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="../PAGE/hot.html" class="nav-link">Truyện Hot</a></li>
+      <li class="nav-item">
+        <a href="../PAGE/updated.html" class="nav-link">Mới Cập Nhật</a></li>
+      <li class="nav-item">
+        <a href="../PAGE/completed.html" class="nav-link">Hoàn Thành</a></li>
+    </ul>
+  </nav>
+
+  <div
+    class="mobile-nav-overlay"
+    id="mobileMenu"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="mobileMenuLabel"
+    tabindex="-1"
+  >
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="../HOME/home.html" class="mobile-nav-link">Trang chủ</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">Thể Loại</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">Truyện Hot</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">Mới Cập Nhật</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">Hoàn Thành</a>
+      </li>
+    </ul>
+  </div>
+</header>
