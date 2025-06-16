@@ -1,5 +1,12 @@
+// Tính đường dẫn tương đối tùy theo độ sâu thư mục hiện tại
+function getRelativePath(target) {
+  const currentPath = window.location.pathname;
+  const depth = currentPath.split("/").length - 2; // Trừ domain + tên file
+  return "../".repeat(depth) + target;
+}
+
 window.addEventListener("DOMContentLoaded", () => {
-  fetch("../COMPONENTS/HEADER/header.html")
+  fetch(getRelativePath("COMPONENTS/HEADER/header.html"))
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("header-placeholder").innerHTML = data;
@@ -55,7 +62,6 @@ function setupHeaderEvents() {
   const searchIcon = document.querySelector('.search-icon');
 
   function emitSearchEvent() {
-    const searchInput = document.querySelector('.search-input');
     if (!searchInput) return;
     const keyword = searchInput.value.trim();
     window.dispatchEvent(new CustomEvent('search-story', { detail: keyword }));
@@ -73,20 +79,21 @@ function setupHeaderEvents() {
   }
 }
 
-window.addEventListener('search-story', function(e) {
-  const keyword = e.detail.trim().toLowerCase();
-  // Tìm truyện có title khớp tuyệt đối (không phân biệt hoa thường)
-  const found = stories.find(story =>
-    story.title.toLowerCase() === keyword && story.link
-  );
-  if (found) {
-    window.location.href = found.link; // chuyển đến trang chi tiết
-  } else {
-    // Nếu không khớp tuyệt đối, có thể filter như bình thường
-    const filtered = stories.filter(story =>
-      story.title.toLowerCase().includes(keyword) ||
-      (story.description && story.description.toLowerCase().includes(keyword))
-    );
-    displayStories(filtered);
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownBtn = document.querySelector('.dropdown-btn');
+  const dropdownContent = document.querySelector('.genre-dropdown-content');
+
+  if (dropdownBtn && dropdownContent) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdownContent.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function() {
+      dropdownContent.classList.remove('show');
+    });
   }
+
+
+
 });

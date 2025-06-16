@@ -1,109 +1,125 @@
 document.addEventListener("DOMContentLoaded", function () {
   const stories = [
     {
-      title: "Truyện 1",
-      description: "Mô tả ngắn về truyện 1.",
-      link: "../INTRODUCE/truyen1.html",
-      image: "https://via.placeholder.com/300x140?text=Truyện+1"
+      title: "Tiên Nghịch",
+      description: "",
+      image: "img/tiên nghịch.jpg",
+      link: "../INTRODUCE/tiên nghịch/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 2",
-      description: "Mô tả ngắn về truyện 2.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+2",
+      title: "Đấu Phá Thương Khung",
+      description: "Đấu Phá Thương Khung kể về một thế giới thuộc về Đấu Khí...",
+      image: "/INTRODUCE/đấu phá thương khung/đấu phá thương khung.jpg",
+      category: "Cổ trang, Huyền huyễn",
+      author: "Thiên Tàm Thổ Đậu",
+      status: "Hoàn thành",
+      link: "../INTRODUCE/đấu phá thương khung/index.html"
     },
     {
-      title: "Truyện 3",
-      description: "Mô tả ngắn về truyện 3.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+3",
+      title: "Mục Thần Ký",
+      description: "",
+      image: "img/mục thần ký.jpg",
+      link: "../INTRODUCE/mục thần ký/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 4",
-      description: "Mô tả ngắn về truyện 4.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+4",
+      title: "Tru Tiên",
+      description: "",
+      image: "img/tru tiên.jpg",
+      link: "../INTRODUCE/tru tiên/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 5",
-      description: "Mô tả ngắn về truyện 5.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+5",
+      title: "Thương Nguyên Đồ",
+      description: "",
+      image: "img/thương nguyên đồ.jpg",
+      link: "../INTRODUCE/thương nguyên đồ/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 6",
-      description: "Mô tả ngắn về truyện 6.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+6",
+      title: "Trảm Thần",
+      description: "",
+      image: "img/trảm thần.jpg",
+      link: "../INTRODUCE/trảm thần/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 7",
-      description: "Mô tả ngắn về truyện 7.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+7",
+      title: "Kiếm Lai",
+      description: "",
+      image: "img/kiếm lai.jpg",
+      link: "../INTRODUCE/kiếm lai/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 8",
-      description: "Mô tả ngắn về truyện 8.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+8",
+      title: "Hoạ Giang Hồ Chi Bất Lương Nhân",
+      description: "",
+      image: "img/hoạ giang hồ.jpg",
+      link: "../INTRODUCE/hoạ giang hồ/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 9",
-      description: "Mô tả ngắn về truyện 9.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+9",
+      title: "Già Thiên",
+      image: "img/già thiên.jpg",
+      description: "",
+      link: "../INTRODUCE/già thiên/index.html", // Thay đổi đường dẫn vào truyen1.html",
     },
     {
-      title: "Truyện 10",
-      description: "Mô tả ngắn về truyện 10.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+10",
-    },
-    {
-      title: "Truyện 11",
+      title: "Thôn Phệ Tinh Không",
       description: "Mô tả ngắn về truyện 11.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+11",
+      image: "img/thôn phệ tinh không.jpg",
+      link: "../INTRODUCE/thôn phệ tinh không/index.html",
     },
     {
-      title: "Truyện 12",
+      title: "Hoả Phụng Liêu Nguyên",
       description: "Mô tả ngắn về truyện 12.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+12",
+      image: "img/hoả phụng liêu nguyên.jpg",
+      link: "../INTRODUCE/hoả phụng liêu nguyên/index.html",
     },
     {
-      title: "Truyện 13",
+      title: "Trường Sinh Giới",
       description: "Mô tả ngắn về truyện 13.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+13",
+      image: "img/trường sinh giới.jpg",
+      link: "../INTRODUCE/trường sinh giới/index.html",
     },
     {
-      title: "Truyện 14",
+      title: "Nguyên Tôn",
       description: "Mô tả ngắn về truyện 14.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+14",
+      image: "img/nguyên tôn.jpg",
+      link: "../INTRODUCE/nguyên tôn/index.html",
     },
     {
-      title: "Truyện 15",
+      title: "Quyến Tư Lượng",
       description: "Mô tả ngắn về truyện 15.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+15",
+      image: "img/quyến tư lượng.jpg",
+      link: "../INTRODUCE/quyến tư lượng/index.html",
     },
     {
-      title: "Truyện 16",
+      title: "Vương Giả Vinh Diệu",
       description: "Mô tả ngắn về truyện 16.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+16",
+      image: "img/vương giả vinh diệu.jpeg",
+      link: "../INTRODUCE/vương giả vinh diệu/index.html",
     },
     {
-      title: "Truyện 17",
+      title: "Thần Lan Kỳ Vực Vô Song Châu",
       description: "Mô tả ngắn về truyện 17.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+17",
+      image: "img/thần lan kỳ vực vô song châu.jpg",
+      link: "../INTRODUCE/thần lan kỳ vực vô song châu/index.html",
     },
     {
-      title: "Truyện 18",
+      title: "Phàm Nhân Tu Tiên",
       description: "Mô tả ngắn về truyện 18.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+18",
+      image: "img/phàm nhân tu tiên.jpg",
+      link: "../INTRODUCE/phàm nhân tu tiên/index.html",
     },
     {
-      title: "Truyện 19",
+      title: "Tử Xuyên",
       description: "Mô tả ngắn về truyện 19.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+19",
+      image: "img/tử xuyên.jpg",
+      link: "../INTRODUCE/tử xuyên/index.html",
     },
     {
-      title: "Truyện 20",
+      title: "Natra Ma Đồng Giáng Thế",
       description: "Mô tả ngắn về truyện 20.",
-      image: "https://via.placeholder.com/300x140?text=Truyện+20",
+      image: "img/natra ma đồng giáng thế.jpg",
+      link: "../INTRODUCE/natra ma đồng giáng thế/index.html",
     },
   ];
 
-  const storiesPerPage = 9;
+  const storiesPerPage = 12;
   let currentPage = 1;
   let filteredStories = [...stories];
 
@@ -230,13 +246,13 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     if (found) {
       window.location.href = found.link;
-    } else {
-      // Nếu không khớp tuyệt đối, có thể filter như bình thường
-      const filtered = stories.filter(story =>
-        story.title.toLowerCase().includes(keyword) ||
-        (story.description && story.description.toLowerCase().includes(keyword))
-      );
-      displayStories(filtered);
+      return;
     }
+    // Nếu không khớp tuyệt đối, filter như bình thường
+    const filtered = stories.filter(story =>
+      story.title.toLowerCase().includes(keyword) ||
+      (story.description && story.description.toLowerCase().includes(keyword))
+    );
+    displayStories(filtered);
   });
 });

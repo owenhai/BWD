@@ -1,6 +1,13 @@
 // footer.js
 
-fetch("../COMPONENTS/FOOTER/footer.html")
+// Tính đường dẫn tương đối tùy theo độ sâu thư mục hiện tại
+function getRelativePath(target) {
+  const currentPath = window.location.pathname;
+  const depth = currentPath.split("/").length - 2; // Trừ domain + tên file
+  return "../".repeat(depth) + target;
+}
+
+fetch(getRelativePath("COMPONENTS/FOOTER/footer.html"))
   .then((response) => response.text())
   .then((data) => {
     const footerPlaceholder = document.getElementById("footer-placeholder");

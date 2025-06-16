@@ -1,3 +1,4 @@
+/* RESET & BASE */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,9 +6,9 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #222;
+  font-family: "Inter", sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,101 +28,187 @@ body {
 .page-title {
   text-align: center;
   margin-bottom: 24px;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #111;
+  font-size: 2.75rem;
+  font-weight: 700; /* Giảm độ đậm cho dễ nhìn hơn */
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* font đẹp, hiện đại, đơn giản */
+
+  /* Fallback color */
+  color: #ff6a00;
+
+  /* Gradient text */
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Thêm letter spacing cho thoáng chữ */
+  letter-spacing: 0.02em;
+
+  /* Chỉnh line-height để cân đối */
+  line-height: 1.2;
 }
 
+/* GRID */
 .story-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 24px;
 }
 
+/* CARD ĐƯỢC VIẾT LẠI */
 .story-card {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  position: relative;
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
+  height: 300px; /* hình chữ nhật đứng */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background-color: #1a1a1a;
 }
 
-.story-card:hover,
-.story-card:focus-within {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.25);
+.story-card:hover {
+  transform: scale(1.03);
 }
 
-.story-image {
+/* ẢNH LÀM NỀN */
+.story-card .story-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 140px;
+  height: 100%;
   object-fit: cover;
-  border-bottom: 1px solid #eee;
+  z-index: 1;
 }
 
+/* LỚP MÀN MỜ */
+.story-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  z-index: 2;
+}
+
+/* PHẦN TEXT */
 .story-content {
-  padding: 16px 18px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 12px;
+  width: 100%;
+  z-index: 3;
+  color: #fff;
+  text-align: center;
 }
 
 .story-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #222;
-  flex-shrink: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  margin: 0;
 }
 
 .story-description {
-  color: #555;
-  font-size: 0.95rem;
-  flex-grow: 1;
-  line-height: 1.4;
-  overflow: hidden;
+  display: none; /* Ẩn nếu không cần mô tả */
 }
 
-/* Pagination Styles */
+/* PAGINATION */
 .pagination {
-  margin: 32px 0 16px;
+  margin: 40px 0 24px;
   text-align: center;
   user-select: none;
 }
 
 .pagination button {
-  background-color: transparent;
-  border: 2px solid #4f46e5;
-  color: #4f46e5;
-  min-width: 36px;
-  height: 36px;
-  margin: 0 4px;
-  border-radius: 8px;
+  background: transparent;
+  border: 2px solid transparent; /* ẩn viền mặc định */
+  border-radius: 12px;
+  color: #fff;
+  min-width: 40px;
+  height: 40px;
+  margin: 0 6px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  position: relative;
+  z-index: 0;
 }
 
-.pagination button:hover:not(.active) {
-  background-color: #4f46e5;
+/* Tạo viền gradient bo tròn bằng ::before */
+.pagination button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px; /* độ dày viền */
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hover/focus: nền gradient hiện lên, viền biến mất */
+.pagination button:hover:not(.active),
+.pagination button:focus:not(.active) {
+  background: linear-gradient(to right, #ff6a00, #ee0979);
   color: #fff;
+  box-shadow: 0 6px 16px rgba(255, 105, 135, 0.4);
+  transform: scale(1.1);
+  outline: none;
 }
 
+/* Khi hover/focus thì ẩn viền gradient ::before */
+.pagination button:hover::before,
+.pagination button:focus::before {
+  background: transparent;
+}
+
+/* Nút active */
 .pagination button.active {
-  background-color: #4f46e5;
-  color: #fff;
+  background: linear-gradient(to right, #ff7f50, #ff4d4d);
   cursor: default;
   pointer-events: none;
+  box-shadow: 0 4px 14px rgba(255, 105, 135, 0.5);
+  border: none;
+  color: #fff;
+  position: relative;
+  z-index: 0;
 }
 
-.pagination button.ellipsis {
-  border: none;
-  cursor: default;
-  color: #999;
-  font-weight: 400;
-  min-width: auto;
-  padding: 0 8px;
+/* RESPONSIVE */
+@media (max-width: 576px) {
+  .story-grid {
+    gap: 16px;
+  }
+
+  .story-content {
+    padding: 12px 14px;
+  }
+
+  .pagination {
+    margin: 24px 0 16px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .story-title {
+    font-size: 1rem;
+  }
+
+  .story-description {
+    font-size: 0.9rem;
+  }
 }
