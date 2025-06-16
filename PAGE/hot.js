@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
       category: "Tiên Hiệp",
       link: "../INTRODUCE/truyen2.html"
     },
-    // Thêm 18 truyện khác...
+    
   ].sort((a, b) => b.views - a.views); // Sắp xếp giảm dần theo view
 
   const storiesPerPage = 9;

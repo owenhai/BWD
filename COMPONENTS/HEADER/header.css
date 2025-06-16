@@ -301,6 +301,59 @@ nav.navbar {
   padding-left: 5px;
 }
 
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.auth-btn {
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: none;
+  background: #fff;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.auth-btn.login-btn:hover {
+  background: #ececec;
+  color: #3b3be6;
+}
+
+.auth-btn.register-btn {
+  background: #3b3be6;
+  color: #fff;
+}
+
+.auth-btn.register-btn:hover {
+  background: #222;
+  color: #fff;
+}
+
+/* Mobile genre list */
+.mobile-genre-list {
+  list-style: none;
+  padding-left: 16px;
+  margin: 8px 0 0 0;
+}
+
+.mobile-genre-list li a {
+  display: block;
+  padding: 8px 0;
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.mobile-genre-list li a:hover {
+  color: #3b3be6;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   .dropdown-content {
