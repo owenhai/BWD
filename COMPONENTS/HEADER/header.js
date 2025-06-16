@@ -55,8 +55,9 @@ function setupHeaderEvents() {
   const searchIcon = document.querySelector('.search-icon');
 
   function emitSearchEvent() {
+    const searchInput = document.querySelector('.search-input');
+    if (!searchInput) return;
     const keyword = searchInput.value.trim();
-    // Phát sự kiện để trang hiện tại lắng nghe và filter
     window.dispatchEvent(new CustomEvent('search-story', { detail: keyword }));
   }
 
@@ -73,10 +74,19 @@ function setupHeaderEvents() {
 }
 
 window.addEventListener('search-story', function(e) {
-  const keyword = e.detail.toLowerCase();
-  const filtered = stories.filter(story =>
-    story.title.toLowerCase().includes(keyword) ||
-    (story.description && story.description.toLowerCase().includes(keyword))
+  const keyword = e.detail.trim().toLowerCase();
+  // Tìm truyện có title khớp tuyệt đối (không phân biệt hoa thường)
+  const found = stories.find(story =>
+    story.title.toLowerCase() === keyword && story.link
   );
-  displayStories(filtered);
+  if (found) {
+    window.location.href = found.link; // chuyển đến trang chi tiết
+  } else {
+    // Nếu không khớp tuyệt đối, có thể filter như bình thường
+    const filtered = stories.filter(story =>
+      story.title.toLowerCase().includes(keyword) ||
+      (story.description && story.description.toLowerCase().includes(keyword))
+    );
+    displayStories(filtered);
+  }
 });

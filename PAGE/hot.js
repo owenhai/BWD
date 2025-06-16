@@ -6,14 +6,16 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Top 1 tuần này với hơn 50k lượt xem",
       image: "https://via.placeholder.com/300x140?text=Hot+1",
       views: 52000,
-      category: "Ngôn Tình"
+      category: "Ngôn Tình",
+      link: "../INTRODUCE/truyen1.html"
     },
     {
       title: "Truyện Hot 2", 
       description: "Đang gây sốt cộng đồng",
       image: "https://via.placeholder.com/300x140?text=Hot+2",
       views: 48000,
-      category: "Tiên Hiệp"
+      category: "Tiên Hiệp",
+      link: "../INTRODUCE/truyen2.html"
     },
     // Thêm 18 truyện khác...
   ].sort((a, b) => b.views - a.views); // Sắp xếp giảm dần theo view
@@ -68,6 +70,15 @@ document.addEventListener("DOMContentLoaded", function() {
       displayStories(); // Hiện tất cả nếu không nhập gì
       return;
     }
+    // Nếu nhập đúng tên truyện, chuyển trang chi tiết
+    const found = stories.find(story =>
+      story.title.toLowerCase() === keyword && story.link
+    );
+    if (found) {
+      window.location.href = found.link;
+      return;
+    }
+    // Nếu không, filter như bình thường
     const filtered = stories.filter(story =>
       story.title.toLowerCase().includes(keyword) ||
       (story.description && story.description.toLowerCase().includes(keyword))
@@ -95,12 +106,14 @@ document.addEventListener("DOMContentLoaded", function() {
       const card = document.createElement("article");
       card.className = "story-card";
       card.innerHTML = `
-        <img src="${story.image}" alt="${story.title}" class="story-image">
-        <div class="story-content">
-          <h3 class="story-title">${story.title}</h3>
-          <p class="story-description">${story.description}</p>
-          <small>Lượt xem: ${story.views.toLocaleString()}</small>
-        </div>
+        <a href="${story.link}">
+          <img src="${story.image}" alt="${story.title}" class="story-image">
+          <div class="story-content">
+            <h3 class="story-title">${story.title}</h3>
+            <p class="story-description">${story.description}</p>
+            <small>Lượt xem: ${story.views.toLocaleString()}</small>
+          </div>
+        </a>
       `;
       storyGrid.appendChild(card);
     });
@@ -169,4 +182,21 @@ document.addEventListener("DOMContentLoaded", function() {
       filterStoriesBySearch(searchInput.value);
     });
   }
+
+  window.addEventListener('search-story', function(e) {
+    const keyword = e.detail.trim().toLowerCase();
+    const found = stories.find(story =>
+      story.title.toLowerCase() === keyword && story.link
+    );
+    if (found) {
+      window.location.href = found.link;
+      return;
+    }
+    // Nếu không khớp tuyệt đối, filter như bình thường
+    const filtered = stories.filter(story =>
+      story.title.toLowerCase().includes(keyword) ||
+      (story.description && story.description.toLowerCase().includes(keyword))
+    );
+    displayStories(filtered);
+  });
 });

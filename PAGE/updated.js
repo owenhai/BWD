@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
       image: "https://via.placeholder.com/300x140?text=New+1",
       updatedAt: new Date('2023-05-15'),
       category: "Ngôn Tình",
-      status: "Mới Cập Nhật"
+      status: "Mới Cập Nhật",
+      link: "../INTRODUCE/truyen1.html"
     },
     {
       title: "Truyện Mới 2",
@@ -15,9 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
       image: "https://via.placeholder.com/300x140?text=New+2",
       updatedAt: new Date('2023-05-14'),
       category: "Tiên Hiệp",
-      status: "Hoàn Thành"
+      status: "Hoàn Thành",
+      link: "../INTRODUCE/truyen2.html"
     },
-    // Thêm 18 truyện khác...
+    // Thêm 18 truyện khác, mỗi truyện cần có thuộc tính link
   ].sort((a, b) => b.updatedAt - a.updatedAt); // Sắp xếp mới nhất trước
 
   const storiesPerPage = 9;
@@ -38,21 +40,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  function displayStories() {
-    storyGrid.innerHTML = "";
-
-    let filteredStories = [...stories];
+  function displayStories(filteredList) {
+    let filteredStories = filteredList || [...stories];
 
     // Xử lý filter
-    if (currentFilter === "Mới Nhất") {
-      filteredStories.sort((a, b) => b.updatedAt - a.updatedAt); // Mới nhất lên đầu
-    } else if (currentFilter === "Cũ Nhất") {
-      filteredStories.sort((a, b) => a.updatedAt - b.updatedAt); // Cũ nhất lên đầu
-    } else {
-      // "Tất Cả" hoặc filter khác: mặc định sort mới nhất lên đầu
-      filteredStories.sort((a, b) => b.updatedAt - a.updatedAt);
+    if (!filteredList) {
+      if (currentFilter === "Mới Nhất") {
+        filteredStories.sort((a, b) => b.updatedAt - a.updatedAt); // Mới nhất lên đầu
+      } else if (currentFilter === "Cũ Nhất") {
+        filteredStories.sort((a, b) => a.updatedAt - b.updatedAt); // Cũ nhất lên đầu
+      } else {
+        // "Tất Cả" hoặc filter khác: mặc định sort mới nhất lên đầu
+        filteredStories.sort((a, b) => b.updatedAt - a.updatedAt);
+      }
     }
 
+    storyGrid.innerHTML = "";
     const start = (currentPage - 1) * storiesPerPage;
     const end = start + storiesPerPage;
     const paginatedStories = filteredStories.slice(start, end);
@@ -77,9 +80,9 @@ document.addEventListener("DOMContentLoaded", function() {
   function createPagination(totalStories) {
     pagination.innerHTML = "";
     const totalPages = Math.ceil(totalStories / storiesPerPage);
-    
+
     if (totalPages <= 1) return;
-    
+
     const prevBtn = document.createElement("button");
     prevBtn.textContent = "‹";
     prevBtn.disabled = currentPage === 1;
@@ -90,20 +93,20 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
     pagination.appendChild(prevBtn);
-    
+
     for (let i = 1; i <= totalPages; i++) {
       const pageBtn = document.createElement("button");
       pageBtn.textContent = i;
       if (i === currentPage) pageBtn.classList.add("active");
-      
+
       pageBtn.addEventListener("click", () => {
         currentPage = i;
         displayStories();
       });
-      
+
       pagination.appendChild(pageBtn);
     }
-    
+
     const nextBtn = document.createElement("button");
     nextBtn.textContent = "›";
     nextBtn.disabled = currentPage === totalPages;
@@ -117,4 +120,21 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   displayStories();
+
+  // Lắng nghe sự kiện tìm kiếm từ header
+  window.addEventListener('search-story', function(e) {
+    const keyword = e.detail.trim().toLowerCase();
+    const found = stories.find(story =>
+      story.title.toLowerCase() === keyword && story.link
+    );
+    if (found) {
+      window.location.href = found.link;
+      return;
+    }
+    const filtered = stories.filter(story =>
+      story.title.toLowerCase().includes(keyword) ||
+      (story.description && story.description.toLowerCase().includes(keyword))
+    );
+    displayStories(filtered);
+  });
 });

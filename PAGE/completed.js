@@ -6,21 +6,24 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Đã hoàn thành với 100 chương",
       image: "https://via.placeholder.com/300x140?text=Completed+1",
       status: "Hoàn Thành",
-      category: "Ngôn Tình"
+      category: "Ngôn Tình",
+      link: "../INTRODUCE/truyen1.html"
     },
     {
       title: "Truyện 2",
       description: "Đang cập nhật",
       image: "https://via.placeholder.com/300x140?text=Ongoing+2",
       status: "Chưa Hoàn Thành",
-      category: "Tiên Hiệp"
+      category: "Tiên Hiệp",
+      link: "../INTRODUCE/truyen2.html"
     },
     {
       title: "Truyện 3",
       description: "Tạm dừng ở chương 20",
       image: "https://via.placeholder.com/300x140?text=Paused+3",
       status: "Tạm Dừng",
-      category: "Hành Động"
+      category: "Hành Động",
+      link: "../INTRODUCE/truyen3.html"
     },
     // Thêm các truyện khác...
   ];
@@ -43,11 +46,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  function displayStories() {
+  function displayStories(filteredList) {
+    const list = filteredList || stories;
     storyGrid.innerHTML = "";
 
-    let filteredStories = stories;
-    if (currentFilter !== "Tất cả") {
+    let filteredStories = list;
+    if (!filteredList && currentFilter !== "Tất cả") {
       filteredStories = stories.filter(story => story.status === currentFilter);
     }
 
@@ -115,4 +119,21 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   displayStories();
+
+  // Lắng nghe sự kiện tìm kiếm từ header
+  window.addEventListener('search-story', function(e) {
+    const keyword = e.detail.trim().toLowerCase();
+    const found = stories.find(story =>
+      story.title.toLowerCase() === keyword && story.link
+    );
+    if (found) {
+      window.location.href = found.link;
+      return;
+    }
+    const filtered = stories.filter(story =>
+      story.title.toLowerCase().includes(keyword) ||
+      (story.description && story.description.toLowerCase().includes(keyword))
+    );
+    displayStories(filtered);
+  });
 });

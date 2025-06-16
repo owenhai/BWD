@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Truyện 1",
       description: "Mô tả ngắn về truyện 1.",
       link: "../INTRODUCE/truyen1.html",
-      image: "https://via.placeholder.com/300x140?text=Truyện+1",
-      link: "../INTRODUCE/truyen1.html",
+      image: "https://via.placeholder.com/300x140?text=Truyện+1"
     },
     {
       title: "Truyện 2",
@@ -223,4 +222,21 @@ document.addEventListener("DOMContentLoaded", function () {
   let totalPages = Math.ceil(filteredStories.length / storiesPerPage);
   displayStories(currentPage);
   createPagination(totalPages);
+
+  window.addEventListener('search-story', function(e) {
+    const keyword = e.detail.trim().toLowerCase();
+    const found = stories.find(story =>
+      story.title.toLowerCase() === keyword && story.link
+    );
+    if (found) {
+      window.location.href = found.link;
+    } else {
+      // Nếu không khớp tuyệt đối, có thể filter như bình thường
+      const filtered = stories.filter(story =>
+        story.title.toLowerCase().includes(keyword) ||
+        (story.description && story.description.toLowerCase().includes(keyword))
+      );
+      displayStories(filtered);
+    }
+  });
 });
